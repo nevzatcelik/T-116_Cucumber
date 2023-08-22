@@ -1,20 +1,25 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Given;
+import pages.AileButcemPage;
 import utils.Driver;
 import utils.ReusableMethods;
 
 public class aileButcemTest {
-    @Given("Kullanici ilgili kurulumlari tamamlayarak cihazla baglantisini gerceklestirir")
-    public void kullanici_ilgili_kurulumlari_tamamlayarak_cihazla_baglantisini_gerceklestirir() {
+    AileButcemPage aileButcemPage=new AileButcemPage();
+    @Given("Kullanici ilgili kurulumlari tamamlayarak {int} cihazla baglantisini gerceklestirir")
+    public void kullanici_ilgili_kurulumlari_tamamlayarak_cihazla_baglantisini_gerceklestirir(int bekleme) throws InterruptedException {
         Driver.getAndroidDriver();
+        Thread.sleep(bekleme);
     }
-    @Given("ilk ekran ayarlarini yapin ve ardindan login sayfasina ulasin")
-    public void ilk_ekran_ayarlarini_yapin_ve_ardindan_login_sayfasina_ulasin() throws InterruptedException {
+    @Given("ilk ekran ayarlarini yapin ve ardindan {string} login sayfasina ulasin")
+    public void ilk_ekran_ayarlarini_yapin_ve_ardindan_login_sayfasina_ulasin(String tiklanacakButon) throws InterruptedException {
+    aileButcemPage.ilkEkranGecmeMethodu(tiklanacakButon);
 
     }
-    @Given("mail ve password bilgilerini girerek kullanici bilgileriyle giris yapin")
-    public void mail_ve_password_bilgilerini_girerek_kullanici_bilgileriyle_giris_yapin() {
+    @Given("{string} ve {string} {string} bilgilerini girerek kullanici bilgileriyle giris yapin")
+    public void mail_ve_password_bilgilerini_girerek_kullanici_bilgileriyle_giris_yapin(String mail,String password,String tiklanacakText) {
+     aileButcemPage.loginMethodu(mail,password,tiklanacakText);
 
     }
     @Given("uygulamaya kullanici bilgileriyle giris yapildigini dogrulayin")
