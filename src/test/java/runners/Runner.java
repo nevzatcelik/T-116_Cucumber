@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",},
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags = "@ab",
+        tags = "@browser",
         dryRun = false
         /*
          Eger ki featureslarda bizim eksik yani daha once tanimlanmamis(turuncu sekilde gozukmesi) scenriolari belirlemek icin
