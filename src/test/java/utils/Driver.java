@@ -39,6 +39,7 @@ public class Driver {
             // true uygulama sifirlanmiyor onceki adimlari muhafaza ediyor
             //false ise her test baslangicinda uygulamayi sifirliyor ve uygulama en bastan basliyor
             caps.setCapability(MobileCapabilityType.BROWSER_NAME,"chrome");
+            caps.setCapability("chromedriverExecutable","C:\\Users\\ahmet\\IdeaProjects\\APPIUM_T116-CUCUMBER\\driver\\chromedriver.exe");
 
             if (ConfigReader.getProperty("platformName").equals("Android")) {
 
