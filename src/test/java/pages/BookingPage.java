@@ -14,4 +14,26 @@ public class BookingPage {
 
   @FindBy(xpath = "//*[text()='Decline']")
   public WebElement cookie;
+
+    @FindBy(xpath = "//button[@aria-label='Menu']")
+    public WebElement menuButton;
+
+    @FindBy(xpath = "//*[@data-testid='header-mobile-menu-currency-picker-menu-item']")
+    public WebElement currencyButton;
+
+    @FindBy(xpath = "//*[text()='Euro']")
+    public WebElement euro;
+
+    @FindBy(xpath = "//*[@data-testid='header-mobile-menu-language-picker-menu-item']")
+    public WebElement languageMenu;
+
+    @FindBy(xpath = "//*[text()='Türkçe']")
+    public WebElement turkce;
+
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "(//*[@class='abf093bdfe d86cee9b25'])[1]")
+  public WebElement firstRate;
+
 }

@@ -9,6 +9,6 @@ Feature: Booking sayfasindaki gorevler yerine getirilir
  * para birimi bolumunde degisiklik yaparak euro secer
  * sag ust uc cizgi menuye tiklar
  * dil i turkce olarak degistirir
- * arama bolume antalya yazilir ve arama yapilir
- * gelen otel puanin 7 den yuksek oldugu dogrulanir
+ * arama bolume "antalya" yazilir ve arama yapilir
+ * gelen otel puanin 7.0 den yuksek oldugu dogrulanir
  *  uygulama kapatilir
