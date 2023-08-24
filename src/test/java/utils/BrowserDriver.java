@@ -8,17 +8,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Driver {
+public class BrowserDriver {
 
 
-    private static AndroidDriver appiumDriver;
+
+    private static AndroidDriver browserdriver;
 
     static final String TELEFONADI="PIXEL2";
     static final String ANDROIDVERSION="10.0";
     static final String PLATFORM="Android";
     static final String OTOMASYON_ISMI="UiAutomator2";
 
-    public static AndroidDriver getAndroidDriver()  {
+    public static AndroidDriver getBrowserDriver()  {
         URL appiumServerURL = null;
         try {
             appiumServerURL = new URL("http:127.0.0.1:4723/wd/hub");
@@ -26,26 +27,26 @@ public class Driver {
             e.printStackTrace();
         }
 
-        if (appiumDriver == null) {
+        if (browserdriver == null) {
 
             DesiredCapabilities caps =new DesiredCapabilities();
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, TELEFONADI);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, ANDROIDVERSION);
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, OTOMASYON_ISMI);
-            caps.setCapability("appPackage","com.ailebutcem"); // Hangi uygulama uzerinde calismak istiyorsak apk infodan o uygulamanin degerini aliyoruz
-            caps.setCapability("appActivity","com.ailebutcem.MainActivity"); // Uygulamayi actiktan sonra hangi sayfadan baslayacagimizi orn; Anasayfa, Profil, vb
+            caps.setCapability("appPackage","com.android.chrome"); // Hangi uygulama uzerinde calismak istiyorsak apk infodan o uygulamanin degerini aliyoruz
+            caps.setCapability("appActivity","com.google.android.apps.chrome.Main"); // Uygulamayi actiktan sonra hangi sayfadan baslayacagimizi orn; Anasayfa, Profil, vb
             caps.setCapability(MobileCapabilityType.NO_RESET,false);
             // true uygulama sifirlanmiyor onceki adimlari muhafaza ediyor
             //false ise her test baslangicinda uygulamayi sifirliyor ve uygulama en bastan basliyor
-
-
+           // caps.setCapability(MobileCapabilityType.BROWSER_NAME,"chrome");
+           // caps.setCapability("chromedriverExecutable","C:\\Users\\ahmet\\IdeaProjects\\APPIUM_T116-CUCUMBER\\driver\\chromedriver.exe");
 
             if (ConfigReader.getProperty("platformName").equals("Android")) {
 
                 assert appiumServerURL != null;
-                appiumDriver = new AndroidDriver<>(appiumServerURL,caps);
-                appiumDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                browserdriver = new AndroidDriver<>(appiumServerURL,caps);
+                browserdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             }else {
 
                 throw new UnsupportedOperationException("Invalid Platform Name ");
@@ -54,14 +55,14 @@ public class Driver {
 
         }
 
-        return appiumDriver;
+        return browserdriver;
     }
 
 
     public static void quitAppiumDriver(){
-        if (appiumDriver != null) {
-            appiumDriver.closeApp();
-            appiumDriver = null;
+        if (browserdriver != null) {
+            browserdriver.closeApp();
+            browserdriver = null;
         }
     }
 }
